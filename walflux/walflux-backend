@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 <path_to_image>"
+  exit 1
+fi
+
+IMAGE="$1"
+
+# Send Notification
+notify-send "Changing Theme" "Applying new wallpaper and Updating colors, Please wait until confirmation..."
+
+# Set Wallpaper
+swww img "$IMAGE" --transition-type="center" --transition-step=1 --transition-fps="60"
+
+# Generate pywal colors
+wal -i "$IMAGE" -n -s -e
+
+# Kill and launch waybar and swaync
+pkill waybar
+pkill swaync
+
+waybar >/dev/null 2>&1 &
+swaync >/dev/null 2>&1 &
+
+notify-send "Theme Applied" "Wallpaper and Theme updated successfully!"
