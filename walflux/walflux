@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# wallpaper Directory
+WALL_DIR="$HOME/Pictures/Wallpapers"
+
+# current dir (to go back to)
+CWD="$(pwd)"
+
+cd "$WALL_DIR" || exit 1
+
+# to handle spaces in filename
+IFS=$'\n'
+
+# Grab the selected wallpaper
+SELECTED_WALL=$(for a in *.jpg *.png; do echo -en "$a\0icon\x1f$a\n"; done | wofi -dmenu -p "Wallpaper Name")
+
+echo "DEBUG: Selected = [$SELECTED_WALL]"
+
+# If not empty, pass to walflux-backend
+if [ -n "$SELECTED_WALL" ]; then
+  "$HOME/.local/bin/walflux-backend" "$WALL_DIR/$SELECTED_WALL"
+fi
+
+# Go back to where you came from
+cd "$CWD" || exit 1
