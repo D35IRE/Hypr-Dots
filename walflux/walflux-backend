@@ -8,7 +8,7 @@ fi
 IMAGE="$1"
 
 # Send Notification
-notify-send "Changing Theme" "Applying new wallpaper and Updating colors, Please wait until confirmation..."
+notify-send "Changing Theme & Wallpaper" "Applying new wallpaper and Updating colors, Please wait for few sec..."
 
 # Set Wallpaper
 swww img "$IMAGE" --transition-type="center" --transition-step=1 --transition-fps="60"
