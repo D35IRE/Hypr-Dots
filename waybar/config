@@ -4,14 +4,14 @@
   "layeyr": "top", // Waybar at top layer
   "spacing": 5,
   "height": 0,
-  "margin-bottom": 0,
+  "margin-bottom": 5,
   "margin-top": 0,
   "margin-right": 100,
   "margin-left": 100,
 
   "modules-left": ["hyprland/window"],
   "modules-center": ["custom/applauncher","hyprland/workspaces"],
-  "modules-right": ["network", "battery", "pulseaudio", "tray", "clock"],
+  "modules-right": ["group/connectivity", "battery", "group/control", "tray", "clock"],
 
 
   "hyprland/window": {
@@ -26,15 +26,18 @@
   "hyprland/workspaces": {
     "all-outputs": false,
     "tooltip": false,
-    "format": "{name}",
+    "format": "{icon}",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "active": "  "
-      //"default": " "
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "10": "十"
     },
     "persistent-workspaces": {
       "*": 5, // 5 workspaces by default on every monitor
@@ -44,7 +47,7 @@
 
   "custom/applauncher": {
     "format": " ",
-    "on-click": "pgrep wofi >/dev/null 2>&1 && killall -9 wofi || wofi --show drun --location=top -y 15",
+    "on-click": "pgrep wofi >/dev/null 2>&1 && killall -9 wofi || wofi --show drun --location=bottom -y -55",
     "tooltip": false
   },
 
@@ -58,17 +61,19 @@
     "format": "󰅐  {:%H:%M}",
     "tooltip": false
   },
-  "network": {
-    "format-wifi": "  {bandwidthDownBits}",
-    "format-ethernet": " {bandwidthDownBits}",
-    "format-disconnected": "󰤮 No Network",
-    "interval": 5,
-    "tooltip": false
+
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": ["", ""],
+    "device": "intel_backlight", // Or your specific backlight device
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-"
   },
+
   "pulseaudio": {
     "scroll-step": 5,
     "max-volume": 150,
-    "format": "{icon}  {volume}",
+    "format": "{icon}  {volume}%",
     "format-bluetooth": "{icon} {volume}%",
     "format-icons": [
       "",
@@ -85,6 +90,7 @@
       "warning": 30,
       "critical": 15
     },
+    "interval": 3,
     "format": "{icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",
     "format-plugged": "󰂄{capacity}%",
@@ -95,5 +101,53 @@
       "󱊢",
       "󱊣"
     ]
+  },
+  "group/connectivity": {
+    "orientation": "horizontal", // or "vertical"
+    "modules": [
+      "network",
+      "bluetooth"
+    ],
+    "drawer": {
+      "transition-duration": 500,
+      "transition-type": "over", // or "over", "fade", slide
+      "direction": "up", // or "left", "up", "down"
+      "enabled": true,
+      "hide-on-vertical": true // or false
+    }
+  },
+ "network": {
+    "format-wifi": "  {bandwidthDownBits}",
+    "format-ethernet": "  {bandwidthDownBits}",
+    "format-disconnected": "󰤮 No Network",
+    "interval": 5,
+    "tooltip": true,
+    "on-click": "nm-connection-editor", // or nm-applet, or a custom script
+    "on-click-right": "nm-applet --indicator" 
+  },
+
+
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {device_alias}",
+    "format-disconnected": " Off",
+    "tooltip-format": "Bluetooth: {status}",
+    "on-click": "~/.config/waybar/scripts/rofi-bluetooth &" // Or your preferred Bluetooth manager GUI
+  },
+
+  "group/control": {
+    "orientation": "horizontal", // or "horizontal"
+    "modules": [
+      "pulseaudio",
+      "backlight"
+    ],
+    "drawer": {
+      "transition-duration": 500,
+      "transition-type": "slide", // or "over", "fade", slide
+      "direction": "left", // or "left", "up", "down"
+      "enabled": true,
+      "hide-on-vertical": true // or false
+    }
   }
+
 }
