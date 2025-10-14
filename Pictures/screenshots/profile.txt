@@ -1,0 +1,927 @@
+Time	Sum	Command
+39	12594	> __fish_on_interactive
+233	233	-> functions -e __fish_on_interactive
+413	12322	-> __fish_config_interactive
+2758	2805	--> source /usr/share/fish/functions/__fish_config_interactive.fish
+47	47	---> function __fish_config_interactive -d "Initializations that should be performed when entering interactive mode"...
+5	21	--> if not set -q __fish_initialized...
+16	16	---> not set -q __fish_initialized
+12	12	--> set -g __fish_active_key_bindings
+12	12	--> function __init_uvar -d "Sets a universal variable if it's not already set"...
+4	25	--> if test $__fish_initialized -lt 3400...
+21	21	---> test $__fish_initialized -lt 3400
+2	14	--> if test $__fish_initialized -lt 3800...
+12	12	---> test $__fish_initialized -lt 3800
+32	108	--> if not set -q FISH_UNIT_TESTS_RUNNING...
+9	9	---> not set -q FISH_UNIT_TESTS_RUNNING
+20	20	---> set -l script $__fish_data_dir/tools/create_manpage_completions.py
+4	47	---> if not test -d $__fish_cache_dir/generated_completions...
+43	43	----> not test -d $__fish_cache_dir/generated_completions
+10	764	--> if status --is-interactive...
+10	10	---> status --is-interactive
+166	656	---> functions -q fish_greeting
+482	490	----> source /usr/share/fish/functions/fish_greeting.fish
+8	8	-----> function fish_greeting...
+31	88	---> fish_greeting
+3	14	----> if not set -q fish_greeting...
+11	11	-----> not set -q fish_greeting
+3	28	----> if set -q fish_private_mode...
+25	25	-----> set -q fish_private_mode
+15	15	----> test -n "$fish_greeting"
+2	19	--> if test -d /etc/init.d...
+17	17	---> test -d /etc/init.d
+112	112	--> complete -c [ --wraps test
+14	14	--> complete -c ! --wraps not
+470	1213	--> complete -c(builtin -n | string match -rv '(\.|:|source|cd|contains|count|echo|exec|printf|random|realpath|set|\\[|test|for)') --no-files
+743	743	---> builtin -n | string match -rv '(\.|:|source|cd|contains|count|echo|exec|printf|random|realpath|set|\\[|test|for)'
+20	20	--> function __fish_reload_key_bindings -d "Reload key bindings when binding variable change" --on-variable fish_key_bindings...
+57	5978	--> __fish_reload_key_bindings
+27	56	---> __init_uvar fish_key_bindings fish_default_key_bindings
+5	29	----> if not set --query $argv[1]...
+24	24	-----> not set --query $argv[1]
+3	48	---> if test "$fish_key_bindings" = "$__fish_active_key_bindings" -a -n "$fish_key_bindings"...
+45	45	----> test "$fish_key_bindings" = "$__fish_active_key_bindings" -a -n "$fish_key_bindings"
+3	1255	---> if not functions -q "$fish_key_bindings"...
+172	1252	----> not functions -q "$fish_key_bindings"
+1039	1080	-----> source /usr/share/fish/functions/fish_default_key_bindings.fish
+41	41	------> function fish_default_key_bindings -d "emacs-like key binds"...
+30	30	---> set -g __fish_active_key_bindings "$fish_key_bindings"
+12	12	---> set -g fish_bind_mode default
+180	4362	---> $fish_key_bindings 2>/dev/null
+15	15	----> set -l legacy_bind bind
+5	29	----> if contains -- -h $argv...
+15	15	-----> contains -- -h $argv
+9	9	-----> contains -- --help $argv
+16	178	----> if not set -q argv[1]...
+9	9	-----> not set -q argv[1]
+132	132	-----> bind --erase --all --preset
+2	21	-----> if test "$fish_key_bindings" != fish_default_key_bindings...
+19	19	------> test "$fish_key_bindings" != fish_default_key_bindings
+7	33	----> if not contains -- -s $argv...
+11	11	-----> not contains -- -s $argv
+15	15	-----> set argv -s $argv
+386	3421	----> __fish_shared_key_bindings $argv
+1484	1506	-----> source /usr/share/fish/functions/__fish_shared_key_bindings.fish
+22	22	------> function __fish_shared_key_bindings -d "Bindings shared between emacs and vi mode"...
+18	18	-----> set -l legacy_bind bind
+6	29	-----> if contains -- -h $argv...
+14	14	------> contains -- -h $argv
+9	9	------> contains -- --help $argv
+19	19	-----> bind --preset $argv ctrl-y yank
+14	14	-----> bind --preset $argv alt-y yank-pop
+13	13	-----> bind --preset $argv right forward-char
+10	10	-----> bind --preset $argv left backward-char
+19	19	-----> $legacy_bind --preset $argv -k right forward-char
+15	15	-----> $legacy_bind --preset $argv -k left backward-char
+13	13	-----> bind --preset $argv ctrl-right forward-word
+10	10	-----> bind --preset $argv ctrl-left backward-word
+10	10	-----> bind --preset $argv pageup beginning-of-history
+11	11	-----> bind --preset $argv pagedown end-of-history
+19	19	-----> $legacy_bind --preset $argv -k ppage beginning-of-history
+15	15	-----> $legacy_bind --preset $argv -k npage end-of-history
+11	11	-----> bind --preset $argv ctrl-x fish_clipboard_copy
+11	11	-----> bind --preset $argv ctrl-v fish_clipboard_paste
+11	11	-----> bind --preset $argv escape cancel
+13	13	-----> bind --preset $argv ctrl-\[ cancel
+11	11	-----> bind --preset $argv tab complete
+11	11	-----> bind --preset $argv ctrl-i complete
+10	10	-----> bind --preset $argv ctrl-s pager-toggle-search
+11	11	-----> bind --preset $argv shift-tab complete-and-search
+15	15	-----> $legacy_bind --preset $argv -k btab complete-and-search
+14	14	-----> bind --preset $argv shift-delete history-pager-delete or backward-delete-char
+25	25	-----> $legacy_bind --preset $argv -k sdc history-pager-delete or backward-delete-char
+13	13	-----> bind --preset $argv down down-or-search
+15	15	-----> $legacy_bind --preset $argv -k down down-or-search
+10	10	-----> bind --preset $argv up up-or-search
+17	17	-----> $legacy_bind --preset $argv -k up up-or-search
+11	11	-----> bind --preset $argv shift-right forward-bigword
+12	12	-----> bind --preset $argv shift-left backward-bigword
+16	16	-----> $legacy_bind --preset $argv -k sright forward-bigword
+15	15	-----> $legacy_bind --preset $argv -k sleft backward-bigword
+11	11	-----> bind --preset $argv alt-right nextd-or-forward-word
+24	24	-----> bind --preset $argv alt-left prevd-or-backward-word
+20	20	-----> $legacy_bind --preset $argv \e\[1\;9C nextd-or-forward-word
+17	17	-----> $legacy_bind --preset $argv \e\[1\;9D prevd-or-backward-word
+12	12	-----> bind --preset $argv alt-up history-token-search-backward
+12	12	-----> bind --preset $argv alt-down history-token-search-forward
+17	17	-----> $legacy_bind --preset $argv \e\[1\;9A history-token-search-backward
+15	15	-----> $legacy_bind --preset $argv \e\[1\;9B history-token-search-forward
+12	12	-----> bind --preset $argv alt-. history-token-search-backward
+11	11	-----> bind --preset $argv alt-l __fish_list_current_token
+10	10	-----> bind --preset $argv alt-o __fish_preview_current_file
+19	19	-----> bind --preset $argv alt-w __fish_whatis_current_token
+12	12	-----> bind --preset $argv ctrl-l clear-screen
+10	10	-----> bind --preset $argv ctrl-c clear-commandline
+11	11	-----> bind --preset $argv ctrl-u backward-kill-line
+10	10	-----> bind --preset $argv ctrl-k kill-line
+11	11	-----> bind --preset $argv ctrl-w backward-kill-path-component
+11	11	-----> bind --preset $argv end end-of-line
+11	11	-----> bind --preset $argv home beginning-of-line
+62	62	-----> bind --preset $argv alt-d 'if test "$(commandline; printf .)" = \n.; __fish_echo dirh; else; commandline -f kill-word; end'
+13	13	-----> bind --preset $argv ctrl-d delete-or-exit
+16	16	-----> bind --preset $argv alt-s 'for cmd in sudo doas please; if command -q $cmd; fish_commandline_prepend $cmd; break; end; end'
+33	33	-----> bind --preset $argv f1 __fish_man_page
+18	18	-----> $legacy_bind --preset $argv -k f1 __fish_man_page
+12	12	-----> bind --preset $argv alt-h __fish_man_page
+11	11	-----> bind --preset $argv alt-p __fish_paginate
+11	11	-----> bind --preset $argv alt-# __fish_toggle_comment_commandline
+10	10	-----> bind --preset $argv alt-e edit_command_buffer
+10	10	-----> bind --preset $argv alt-v edit_command_buffer
+63	610	-----> if not set -l index (contains --index -- -M $argv)...
+236	256	------> not set -l index (contains --index -- -M $argv)
+20	20	-------> contains --index -- -M $argv
+19	19	------> bind --preset $argv "" self-insert
+18	18	------> bind --preset $argv space self-insert expand-abbr
+15	15	------> bind --preset $argv ";" self-insert expand-abbr
+13	13	------> bind --preset $argv "|" self-insert expand-abbr
+38	38	------> bind --preset $argv "&" self-insert expand-abbr
+16	16	------> bind --preset $argv ">" self-insert expand-abbr
+14	14	------> bind --preset $argv "<" self-insert expand-abbr
+17	17	------> bind --preset $argv shift-enter "commandline -i \n" expand-abbr
+17	17	------> bind --preset $argv alt-enter "commandline -i \n" expand-abbr
+14	14	------> bind --preset $argv ")" self-insert expand-abbr
+16	16	------> bind --preset $argv ctrl-space 'test -n "$(commandline)" && commandline -i " "'
+23	23	------> $legacy_bind --preset $argv -k nul 'test -n "$(commandline)" && commandline -i " "'
+17	17	------> bind --preset $argv shift-space 'commandline -i " "' expand-abbr
+12	12	------> bind --preset $argv enter execute
+17	17	------> bind --preset $argv ctrl-j execute
+13	13	------> bind --preset $argv ctrl-m execute
+12	12	------> bind --preset $argv ctrl-enter execute
+14	14	----> bind --preset $argv ctrl-k kill-line
+12	12	----> bind --preset $argv right forward-char
+10	10	----> bind --preset $argv left backward-char
+17	17	----> $legacy_bind --preset $argv -k right forward-char
+15	15	----> $legacy_bind --preset $argv -k left backward-char
+11	11	----> bind --preset $argv delete delete-char
+40	40	----> bind --preset $argv backspace backward-delete-char
+16	16	----> bind --preset $argv shift-backspace backward-delete-char
+12	12	----> bind --preset $argv home beginning-of-line
+17	17	----> $legacy_bind --preset $argv -k home beginning-of-line
+12	12	----> bind --preset $argv end end-of-line
+15	15	----> $legacy_bind --preset $argv -k end end-of-line
+11	11	----> bind --preset $argv ctrl-a beginning-of-line
+12	12	----> bind --preset $argv ctrl-e end-of-line
+11	11	----> bind --preset $argv ctrl-h backward-delete-char
+11	11	----> bind --preset $argv ctrl-p up-or-search
+11	11	----> bind --preset $argv ctrl-n down-or-search
+11	11	----> bind --preset $argv ctrl-f forward-char
+12	12	----> bind --preset $argv ctrl-b backward-char
+11	11	----> bind --preset $argv ctrl-t transpose-chars
+11	11	----> bind --preset $argv ctrl-g cancel
+11	11	----> bind --preset $argv ctrl-/ undo
+12	12	----> bind --preset $argv ctrl-_ undo
+11	11	----> bind --preset $argv ctrl-z undo
+11	11	----> bind --preset $argv ctrl-Z redo
+12	12	----> bind --preset $argv alt-/ redo
+11	11	----> bind --preset $argv alt-t transpose-words
+14	14	----> bind --preset $argv alt-u upcase-word
+11	11	----> bind --preset $argv alt-c capitalize-word
+12	12	----> bind --preset $argv alt-backspace backward-kill-word
+13	13	----> bind --preset $argv ctrl-backspace backward-kill-word
+11	11	----> bind --preset $argv ctrl-delete kill-word
+12	12	----> bind --preset $argv alt-b prevd-or-backward-word
+11	11	----> bind --preset $argv alt-f nextd-or-forward-word
+15	15	----> bind --preset $argv alt-\< beginning-of-buffer
+13	13	----> bind --preset $argv alt-\> end-of-buffer
+13	13	----> bind --preset $argv ctrl-r history-pager
+21	21	----> switch "$TERM"...
+5	158	---> if functions --query fish_user_key_bindings >/dev/null...
+153	153	----> functions --query fish_user_key_bindings >/dev/null
+20	110	--> if not set -q fish_handle_reflow...
+12	12	---> not set -q fish_handle_reflow
+19	78	---> if set -q VTE_VERSION...
+7	7	----> set -q VTE_VERSION
+20	20	----> string match -q -- 'alacritty*' $TERM
+13	13	----> test "$TERM_PROGRAM" = WezTerm
+6	6	----> set -q KONSOLE_VERSION
+13	13	----> set -g fish_handle_reflow 1
+31	31	--> function __fish_winch_handler --on-signal WINCH -d "Repaint screen when window changes size"...
+12	12	--> function __fish_update_cwd_osc --on-variable PWD --description 'Notify terminals when $PWD changes'...
+33	582	--> __fish_update_cwd_osc
+16	16	---> set -l host $hostname
+4	9	---> if set -q KONSOLE_VERSION...
+5	5	----> set -q KONSOLE_VERSION
+494	524	---> printf \e\]7\;file://%s%s\a $host (string escape --style=url -- $PWD)
+30	30	----> string escape --style=url -- $PWD
+41	41	--> set __fish_initialized 3800
+16	16	--> functions -e __fish_config_interactive
+130	146	> source /usr/share/fish/functions/fish_mode_prompt.fish
+16	16	-> function fish_mode_prompt --description "Displays the current mode"...
+23	602	> fish_mode_prompt
+209	579	-> fish_default_mode_prompt
+311	325	--> source /usr/share/fish/functions/fish_default_mode_prompt.fish
+14	14	---> function fish_default_mode_prompt --description "Display vi prompt mode"...
+8	45	--> if test "$fish_key_bindings" = fish_vi_key_bindings...
+24	24	---> test "$fish_key_bindings" = fish_vi_key_bindings
+13	13	---> test "$fish_key_bindings" = fish_hybrid_key_bindings
+505	520	> source /usr/share/fish/functions/fish_prompt.fish
+15	15	-> function fish_prompt --description 'Write out the prompt'...
+94	26859	> fish_prompt
+27	27	-> set -l last_pipestatus $pipestatus
+16	16	-> set -lx __fish_last_status $status
+220	334	-> set -l normal (set_color normal)
+114	114	--> set_color normal
+10	10	-> set -q fish_color_status
+15	15	-> set -l color_cwd $fish_color_cwd
+10	10	-> set -l suffix '>'
+7	500	-> if functions -q fish_is_root_user...
+157	383	--> functions -q fish_is_root_user
+212	226	---> source /usr/share/fish/functions/fish_is_root_user.fish
+14	14	----> function fish_is_root_user --description "Check if the user is root"...
+29	110	--> fish_is_root_user
+5	50	---> if test "$EUID" = 0 2>/dev/null...
+45	45	----> test "$EUID" = 0 2>/dev/null
+5	24	---> if contains -- $USER root toor Administrator...
+19	19	----> contains -- $USER root toor Administrator
+7	7	---> return 1
+13	13	-> set -l bold_flag --bold
+7	7	-> set -q __fish_prompt_status_generation
+17	17	-> set -g __fish_prompt_status_generation $status_generation
+9	35	-> if test $__fish_prompt_status_generation = $status_generation...
+16	16	--> test $__fish_prompt_status_generation = $status_generation
+10	10	--> set bold_flag
+17	17	-> set __fish_prompt_status_generation $status_generation
+137	195	-> set -l status_color (set_color $fish_color_status)
+58	58	--> set_color $fish_color_status
+208	240	-> set -l statusb_color (set_color $bold_flag $fish_color_status)
+32	32	--> set_color $bold_flag $fish_color_status
+187	1294	-> set -l prompt_status (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
+376	1107	--> __fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus
+539	555	---> source /usr/share/fish/functions/__fish_print_pipestatus.fish
+16	16	----> function __fish_print_pipestatus --description "Print pipestatus for prompt"...
+16	16	---> set -l last_status
+10	30	---> if set -q __fish_last_status...
+6	6	----> set -q __fish_last_status
+14	14	----> set last_status $__fish_last_status
+14	14	---> set -l left_brace $argv[1]
+10	10	---> set -l right_brace $argv[2]
+15	15	---> set -l separator $argv[3]
+12	12	---> set -l brace_sep_color $argv[4]
+13	13	---> set -l status_color $argv[5]
+14	14	---> set -e argv[1 2 3 4 5]
+2	9	---> if not set -q argv[1]...
+7	7	----> not set -q argv[1]
+13	43	---> if not contains $last_status 0 141...
+30	30	----> not contains $last_status 0 141
+693	24035	-> echo -n -s (prompt_login)' ' (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal " "$prompt_status $suffix " "
+274	2791	--> prompt_login
+673	696	---> source /usr/share/fish/functions/prompt_login.fish
+23	23	----> function prompt_login --description "display user name for the prompt"...
+57	194	---> if not set -q __fish_machine...
+22	22	----> not set -q __fish_machine
+21	21	----> set -g __fish_machine
+25	25	----> set -l debian_chroot $debian_chroot
+7	44	----> if test -r /etc/debian_chroot...
+37	37	-----> test -r /etc/debian_chroot
+6	25	----> if set -q debian_chroot[1]...
+19	19	-----> set -q debian_chroot[1]
+7	49	---> if set -q __fish_machine[1]...
+42	42	----> set -q __fish_machine[1]
+28	28	---> set -l color_host $fish_color_host
+6	20	---> if set -q SSH_TTY...
+14	14	----> set -q SSH_TTY
+861	1530	---> echo -n -s (set_color $fish_color_user) "$USER" (set_color normal) @ (set_color $color_host) (prompt_hostname) (set_color normal)
+97	97	----> set_color $fish_color_user
+30	30	----> set_color normal
+44	44	----> set_color $color_host
+195	478	----> prompt_hostname
+169	191	-----> source /usr/share/fish/functions/prompt_hostname.fish
+22	22	------> function prompt_hostname --description 'short hostname for the prompt'...
+92	92	-----> string replace -r -- "\..*" "" $hostname
+20	20	----> set_color normal
+45	45	--> set_color $color_cwd
+194	2162	--> prompt_pwd
+607	624	---> source /usr/share/fish/functions/prompt_pwd.fish
+17	17	----> function prompt_pwd --description 'short CWD for the prompt'...
+22	22	---> set -l options h/help d/dir-length= D/full-length-dirs=
+29	29	---> argparse -n prompt_pwd $options -- $argv
+3	11	---> if set -q _flag_help...
+8	8	----> set -q _flag_help
+7	7	---> set -q argv[1]
+14	14	---> set argv $PWD
+5	5	---> set -ql _flag_d
+7	7	---> set -q fish_prompt_pwd_dir_length
+10	10	---> set -l fish_prompt_pwd_dir_length 1
+8	8	---> set -l fulldirs 0
+5	5	---> set -ql _flag_D
+6	6	---> set -q fish_prompt_pwd_full_dirs
+9	9	---> set -l fish_prompt_pwd_full_dirs 1
+42	1211	---> for path in $argv...
+154	182	----> set -l realhome (string escape --style=regex -- ~)
+28	28	-----> string escape --style=regex -- ~
+127	195	----> set -l tmp (string replace -r '^'"$realhome"'($|/)' '~$1' $path)
+68	68	-----> string replace -r '^'"$realhome"'($|/)' '~$1' $path
+26	792	----> if test "$fish_prompt_pwd_dir_length" -eq 0...
+22	22	-----> test "$fish_prompt_pwd_dir_length" -eq 0
+11	11	-----> set -l full
+15	487	-----> if test $fish_prompt_pwd_full_dirs -gt 0...
+12	12	------> test $fish_prompt_pwd_full_dirs -gt 0
+133	428	------> set -l all (string split -m (math $fish_prompt_pwd_full_dirs - 1) -r / $tmp)
+150	295	-------> string split -m (math $fish_prompt_pwd_full_dirs - 1) -r / $tmp
+145	145	--------> math $fish_prompt_pwd_full_dirs - 1
+19	19	------> set tmp $all[1]
+13	13	------> set full $all[2..]
+139	246	-----> string join / -- (string replace -ar -- '(\.?[^/]{'"$fish_prompt_pwd_dir_length"'})[^/]*/' '$1/' $tmp) $full
+107	107	------> string replace -ar -- '(\.?[^/]{'"$fish_prompt_pwd_dir_length"'})[^/]*/' '$1/' $tmp
+187	18344	--> fish_vcs_prompt
+147	167	---> source /usr/share/fish/functions/fish_vcs_prompt.fish
+20	20	----> function fish_vcs_prompt --description "Print all vcs prompts"...
+229	15040	---> fish_git_prompt $argv
+6957	10145	----> source /usr/share/fish/functions/fish_git_prompt.fish
+19	19	-----> function __fish_git_prompt_show_upstream --description "Helper function for fish_git_prompt"...
+6	2811	-----> if string match -q Darwin -- (uname)...
+292	2805	------> string match -q Darwin -- (uname)
+2513	2513	-------> uname
+15	15	-----> function fish_git_prompt --description "Prompt function for Git"...
+5	5	-----> function __fish_git_prompt_informative_status...
+26	26	-----> function __fish_git_prompt_operation_branch_bare --description "fish_git_prompt helper, returns the current Git operation and branch"...
+4	4	-----> function __fish_git_prompt_set_char...
+8	8	-----> function __fish_git_prompt_validate_chars --description "fish_git_prompt helper, checks char variables"...
+4	4	-----> function __fish_git_prompt_set_color...
+8	8	-----> function __fish_git_prompt_validate_colors --description "fish_git_prompt helper, checks color variables"...
+48	48	-----> function __fish_git_prompt_reset -a type -a op -a var --description "Event handler, resets prompt when functionality changes" \
+    --on-variable=__fish_git_prompt_{show_informative_status,use_informative_chars}...
+155	155	-----> function __fish_git_prompt_reset_color -a type -a op -a var --description "Event handler, resets prompt when any color changes" \
+    --on-variable=__fish_git_prompt_color{'',_prefix,_suffix,_bare,_merging,_cleanstate,_invalidstate,_upstream,_flags,_branch,_dirtystate,_stagedstate,_branch_detached,_stashstate,_untrackedfiles} --on-variable=__fish_git_prompt_showcolorhints...
+85	85	-----> function __fish_git_prompt_reset_char -a type -a op -a var --description "Event handler, resets prompt when any char changes" \
+    --on-variable=__fish_git_prompt_char_{cleanstate,dirtystate,invalidstate,stagedstate,stashstate,stateseparator,untrackedfiles,upstream_ahead,upstream_behind,upstream_diverged,upstream_equal,upstream_prefix}...
+7	61	----> if not command -sq git...
+54	54	-----> not command -sq git
+11	177	----> if functions -q __fish_git_prompt_ready...
+166	166	-----> functions -q __fish_git_prompt_ready
+346	4389	----> set -l repo_info (command git rev-parse --git-dir --is-inside-git-dir --is-bare-repository --is-inside-work-tree HEAD 2>/dev/null)
+4043	4043	-----> command git rev-parse --git-dir --is-inside-git-dir --is-bare-repository --is-inside-work-tree HEAD 2>/dev/null
+33	33	----> test -n "$repo_info"
+6	6	----> return
+273	1549	---> fish_hg_prompt $argv
+973	1186	----> source /usr/share/fish/functions/fish_hg_prompt.fish
+25	25	-----> set -g fish_color_hg_clean green
+11	11	-----> set -g fish_color_hg_modified yellow
+9	9	-----> set -g fish_color_hg_dirty red
+8	8	-----> set -g fish_color_hg_added green
+8	8	-----> set -g fish_color_hg_renamed magenta
+9	9	-----> set -g fish_color_hg_copied magenta
+8	8	-----> set -g fish_color_hg_deleted red
+30	30	-----> set -g fish_color_hg_untracked yellow
+8	8	-----> set -g fish_color_hg_unmerged red
+13	13	-----> set -g fish_prompt_hg_status_added '✚'
+11	11	-----> set -g fish_prompt_hg_status_modified '*'
+9	9	-----> set -g fish_prompt_hg_status_copied '⇒'
+9	9	-----> set -g fish_prompt_hg_status_deleted '✖'
+10	10	-----> set -g fish_prompt_hg_status_untracked '?'
+9	9	-----> set -g fish_prompt_hg_status_unmerged !
+22	22	-----> set -g fish_prompt_hg_status_order added modified copied deleted untracked unmerged
+14	14	-----> function fish_hg_prompt --description 'Write out the hg prompt'...
+13	90	----> if not command -sq hg...
+70	70	-----> not command -sq hg
+7	7	-----> return 1
+166	1401	---> fish_fossil_prompt $argv
+1130	1146	----> source /usr/share/fish/functions/fish_fossil_prompt.fish
+16	16	-----> function fish_fossil_prompt --description 'Write out the fossil prompt'...
+13	89	----> if not command -sq fossil...
+70	70	-----> not command -sq fossil
+6	6	-----> return 1
+380	427	> source /usr/share/fish/functions/fish_title.fish
+47	47	-> function fish_title...
+37	2163	> fish_title
+20	20	-> set -l ssh
+8	8	-> set -q SSH_TTY
+27	2098	-> if set -q argv[1]...
+7	7	--> set -q argv[1]
+182	201	--> set -l command (status current-command)
+19	19	---> status current-command
+12	48	--> if test "$command" = fish...
+24	24	---> test "$command" = fish
+12	12	---> set command
+312	1815	--> echo -- $ssh (string sub -l 20 -- $command) (prompt_pwd -d 1 -D 1)
+19	19	---> string sub -l 20 -- $command
+96	1484	---> prompt_pwd -d 1 -D 1
+31	31	----> set -l options h/help d/dir-length= D/full-length-dirs=
+50	50	----> argparse -n prompt_pwd $options -- $argv
+4	12	----> if set -q _flag_help...
+8	8	-----> set -q _flag_help
+6	6	----> set -q argv[1]
+16	16	----> set argv $PWD
+5	5	----> set -ql _flag_d
+14	14	----> set -l fish_prompt_pwd_dir_length $_flag_d
+6	6	----> set -q fish_prompt_pwd_dir_length
+18	18	----> set -l fulldirs 0
+6	6	----> set -ql _flag_D
+12	12	----> set -l fish_prompt_pwd_full_dirs $_flag_D
+6	6	----> set -q fish_prompt_pwd_full_dirs
+77	1206	----> for path in $argv...
+171	201	-----> set -l realhome (string escape --style=regex -- ~)
+30	30	------> string escape --style=regex -- ~
+139	216	-----> set -l tmp (string replace -r '^'"$realhome"'($|/)' '~$1' $path)
+77	77	------> string replace -r '^'"$realhome"'($|/)' '~$1' $path
+29	712	-----> if test "$fish_prompt_pwd_dir_length" -eq 0...
+21	21	------> test "$fish_prompt_pwd_dir_length" -eq 0
+11	11	------> set -l full
+18	362	------> if test $fish_prompt_pwd_full_dirs -gt 0...
+12	12	-------> test $fish_prompt_pwd_full_dirs -gt 0
+128	300	-------> set -l all (string split -m (math $fish_prompt_pwd_full_dirs - 1) -r / $tmp)
+126	172	--------> string split -m (math $fish_prompt_pwd_full_dirs - 1) -r / $tmp
+46	46	---------> math $fish_prompt_pwd_full_dirs - 1
+19	19	-------> set tmp $all[1]
+13	13	-------> set full $all[2..]
+192	289	------> string join / -- (string replace -ar -- '(\.?[^/]{'"$fish_prompt_pwd_dir_length"'})[^/]*/' '$1/' $tmp) $full
+97	97	-------> string replace -ar -- '(\.?[^/]{'"$fish_prompt_pwd_dir_length"'})[^/]*/' '$1/' $tmp
+26105	29004	> source /usr/share/fish/completions/cat.fish
+111	2899	-> if cat --version 2>/dev/null >/dev/null...
+2400	2400	--> cat --version 2>/dev/null >/dev/null
+141	141	--> complete -c cat -s A -l show-all -d "Escape all unprintables"
+19	19	--> complete -c cat -s b -l number-nonblank -d "Number non-blank lines"
+14	14	--> complete -c cat -s e -d "Escape unprintables except \\t"
+13	13	--> complete -c cat -s E -l show-ends -d "Display \$ at line end"
+27	27	--> complete -c cat -s n -l number -d "Enumerate lines"
+15	15	--> complete -c cat -s s -l squeeze-blank -d "Never >1 blank line"
+13	13	--> complete -c cat -s t -d "Escape unprintables except \\n"
+45	45	--> complete -c cat -s T -l show-tabs -d "Escape tab"
+34	34	--> complete -c cat -s v -d "Escape unprintables except '\\n' and \\t"
+30	30	--> complete -c cat -l help -d "Display help and exit"
+37	37	--> complete -c cat -l version -d "Display version and exit"
+70	2953	> fish_title cat\ profile.txt
+35	35	-> set -l ssh
+19	19	-> set -q SSH_TTY
+22	2829	-> if set -q argv[1]...
+12	12	--> set -q argv[1]
+549	2795	--> echo -- $ssh (string sub -l 20 -- $argv[1]) (prompt_pwd -d 1 -D 1)
+30	30	---> string sub -l 20 -- $argv[1]
+234	2216	---> prompt_pwd -d 1 -D 1
+25	25	----> set -l options h/help d/dir-length= D/full-length-dirs=
+48	48	----> argparse -n prompt_pwd $options -- $argv
+4	13	----> if set -q _flag_help...
+9	9	-----> set -q _flag_help
+7	7	----> set -q argv[1]
+16	16	----> set argv $PWD
+5	5	----> set -ql _flag_d
+14	14	----> set -l fish_prompt_pwd_dir_length $_flag_d
+6	6	----> set -q fish_prompt_pwd_dir_length
+9	9	----> set -l fulldirs 0
+5	5	----> set -ql _flag_D
+11	11	----> set -l fish_prompt_pwd_full_dirs $_flag_D
+5	5	----> set -q fish_prompt_pwd_full_dirs
+71	1818	----> for path in $argv...
+234	262	-----> set -l realhome (string escape --style=regex -- ~)
+28	28	------> string escape --style=regex -- ~
+258	378	-----> set -l tmp (string replace -r '^'"$realhome"'($|/)' '~$1' $path)
+120	120	------> string replace -r '^'"$realhome"'($|/)' '~$1' $path
+76	1107	-----> if test "$fish_prompt_pwd_dir_length" -eq 0...
+23	23	------> test "$fish_prompt_pwd_dir_length" -eq 0
+15	15	------> set -l full
+32	641	------> if test $fish_prompt_pwd_full_dirs -gt 0...
+15	15	-------> test $fish_prompt_pwd_full_dirs -gt 0
+211	526	-------> set -l all (string split -m (math $fish_prompt_pwd_full_dirs - 1) -r / $tmp)
+187	315	--------> string split -m (math $fish_prompt_pwd_full_dirs - 1) -r / $tmp
+128	128	---------> math $fish_prompt_pwd_full_dirs - 1
+39	39	-------> set tmp $all[1]
+29	29	-------> set full $all[2..]
+243	352	------> string join / -- (string replace -ar -- '(\.?[^/]{'"$fish_prompt_pwd_dir_length"'})[^/]*/' '$1/' $tmp) $full
+109	109	-------> string replace -ar -- '(\.?[^/]{'"$fish_prompt_pwd_dir_length"'})[^/]*/' '$1/' $tmp
+3809	3809	> cat profile.txt
+94	474	> fish_mode_prompt
+272	380	-> fish_default_mode_prompt
+16	108	--> if test "$fish_key_bindings" = fish_vi_key_bindings...
+68	68	---> test "$fish_key_bindings" = fish_vi_key_bindings
+24	24	---> test "$fish_key_bindings" = fish_hybrid_key_bindings
+144	32656	> fish_prompt
+85	85	-> set -l last_pipestatus $pipestatus
+44	44	-> set -lx __fish_last_status $status
+217	352	-> set -l normal (set_color normal)
+135	135	--> set_color normal
+10	10	-> set -q fish_color_status
+17	17	-> set -l color_cwd $fish_color_cwd
+30	30	-> set -l suffix '>'
+9	531	-> if functions -q fish_is_root_user...
+229	229	--> functions -q fish_is_root_user
+43	293	--> fish_is_root_user
+6	61	---> if test "$EUID" = 0 2>/dev/null...
+55	55	----> test "$EUID" = 0 2>/dev/null
+6	181	---> if contains -- $USER root toor Administrator...
+175	175	----> contains -- $USER root toor Administrator
+8	8	---> return 1
+15	15	-> set -l bold_flag --bold
+8	8	-> set -q __fish_prompt_status_generation
+3	28	-> if test $__fish_prompt_status_generation = $status_generation...
+25	25	--> test $__fish_prompt_status_generation = $status_generation
+19	19	-> set __fish_prompt_status_generation $status_generation
+184	224	-> set -l status_color (set_color $fish_color_status)
+40	40	--> set_color $fish_color_status
+175	211	-> set -l statusb_color (set_color $bold_flag $fish_color_status)
+36	36	--> set_color $bold_flag $fish_color_status
+212	21298	-> set -l prompt_status (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
+265	21086	--> __fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus
+16	16	---> set -l last_status
+89	114	---> if set -q __fish_last_status...
+7	7	----> set -q __fish_last_status
+18	18	----> set last_status $__fish_last_status
+29	29	---> set -l left_brace $argv[1]
+13	13	---> set -l right_brace $argv[2]
+11	11	---> set -l separator $argv[3]
+12	12	---> set -l brace_sep_color $argv[4]
+14	14	---> set -l status_color $argv[5]
+15	15	---> set -e argv[1 2 3 4 5]
+2	10	---> if not set -q argv[1]...
+8	8	----> not set -q argv[1]
+47	20587	---> if not contains $last_status 0 141...
+14	14	----> not contains $last_status 0 141
+22	22	----> set -l sep $brace_sep_color$separator$status_color
+241	20165	----> set -l last_pipestatus_string (fish_status_to_signal $argv | string join "$sep")
+492	19924	-----> fish_status_to_signal $argv | string join "$sep"
+1136	1161	------> source /usr/share/fish/functions/fish_status_to_signal.fish
+25	25	-------> function fish_status_to_signal --description "Convert exit code to signal name"...
+241	18133	------> __fish_make_completion_signals
+950	969	-------> source /usr/share/fish/functions/__fish_make_completion_signals.fish
+19	19	--------> function __fish_make_completion_signals --description 'Make list of kill signals for completion'...
+16	16	-------> set -q __kill_signals
+13	13	-------> set -g __kill_signals
+271	2656	-------> set -l os (uname)
+2385	2385	--------> uname
+11	69	-------> if string match -q 'CYGWIN*' -- $os...
+32	32	--------> string match -q 'CYGWIN*' -- $os
+16	16	--------> string match -eiq Msys -- $os
+10	10	--------> string match -eiq mingw -- $os
+43	43	-------> command -q kill
+88	14126	-------> if kill -t 2>/dev/null >/dev/null...
+95	3295	--------> kill -t 2>/dev/null >/dev/null
+253	614	---------> set -l args (__fish_expand_pid_args $argv)
+34	361	----------> __fish_expand_pid_args $argv
+41	327	-----------> for arg in $argv...
+19	286	------------> if string match -qr '^%\d+$' -- $arg...
+96	96	-------------> string match -qr '^%\d+$' -- $arg
+171	171	-------------> printf "%s\n" $arg
+2586	2586	---------> command kill $args
+142	2746	--------> not kill -L 2>/dev/null >/dev/null
+304	488	---------> set -l args (__fish_expand_pid_args $argv)
+34	184	----------> __fish_expand_pid_args $argv
+41	150	-----------> for arg in $argv...
+18	109	------------> if string match -qr '^%\d+$' -- $arg...
+62	62	-------------> string match -qr '^%\d+$' -- $arg
+29	29	-------------> printf "%s\n" $arg
+2116	2116	---------> command kill $args
+67	67	--------> complete -c kill -s L --description "List codes and names of available signals"
+1427	7930	--------> kill -L 2>/dev/null | string trim | string replace -ra '   *' \n | while read -l signo signame
+            set -a __kill_signals "$signo $signame"
+        end
+254	435	---------> set -l args (__fish_expand_pid_args $argv)
+35	181	----------> __fish_expand_pid_args $argv
+38	146	-----------> for arg in $argv...
+20	108	------------> if string match -qr '^%\d+$' -- $arg...
+61	61	-------------> string match -qr '^%\d+$' -- $arg
+27	27	-------------> printf "%s\n" $arg
+2075	2075	---------> command kill $args
+85	85	---------> read -l signo signame
+49	49	---------> set -a __kill_signals "$signo $signame"
+53	53	---------> read -l signo signame
+36	36	---------> set -a __kill_signals "$signo $signame"
+54	54	---------> read -l signo signame
+34	34	---------> set -a __kill_signals "$signo $signame"
+49	49	---------> read -l signo signame
+30	30	---------> set -a __kill_signals "$signo $signame"
+51	51	---------> read -l signo signame
+30	30	---------> set -a __kill_signals "$signo $signame"
+51	51	---------> read -l signo signame
+31	31	---------> set -a __kill_signals "$signo $signame"
+47	47	---------> read -l signo signame
+54	54	---------> set -a __kill_signals "$signo $signame"
+64	64	---------> read -l signo signame
+67	67	---------> set -a __kill_signals "$signo $signame"
+48	48	---------> read -l signo signame
+31	31	---------> set -a __kill_signals "$signo $signame"
+49	49	---------> read -l signo signame
+30	30	---------> set -a __kill_signals "$signo $signame"
+57	57	---------> read -l signo signame
+39	39	---------> set -a __kill_signals "$signo $signame"
+72	72	---------> read -l signo signame
+58	58	---------> set -a __kill_signals "$signo $signame"
+72	72	---------> read -l signo signame
+39	39	---------> set -a __kill_signals "$signo $signame"
+71	71	---------> read -l signo signame
+79	79	---------> set -a __kill_signals "$signo $signame"
+118	118	---------> read -l signo signame
+164	164	---------> set -a __kill_signals "$signo $signame"
+100	100	---------> read -l signo signame
+59	59	---------> set -a __kill_signals "$signo $signame"
+74	74	---------> read -l signo signame
+68	68	---------> set -a __kill_signals "$signo $signame"
+69	69	---------> read -l signo signame
+43	43	---------> set -a __kill_signals "$signo $signame"
+61	61	---------> read -l signo signame
+44	44	---------> set -a __kill_signals "$signo $signame"
+66	66	---------> read -l signo signame
+42	42	---------> set -a __kill_signals "$signo $signame"
+62	62	---------> read -l signo signame
+44	44	---------> set -a __kill_signals "$signo $signame"
+95	95	---------> read -l signo signame
+48	48	---------> set -a __kill_signals "$signo $signame"
+64	64	---------> read -l signo signame
+37	37	---------> set -a __kill_signals "$signo $signame"
+56	56	---------> read -l signo signame
+42	42	---------> set -a __kill_signals "$signo $signame"
+56	56	---------> read -l signo signame
+39	39	---------> set -a __kill_signals "$signo $signame"
+58	58	---------> read -l signo signame
+39	39	---------> set -a __kill_signals "$signo $signame"
+70	70	---------> read -l signo signame
+46	46	---------> set -a __kill_signals "$signo $signame"
+73	73	---------> read -l signo signame
+39	39	---------> set -a __kill_signals "$signo $signame"
+58	58	---------> read -l signo signame
+36	36	---------> set -a __kill_signals "$signo $signame"
+81	81	---------> read -l signo signame
+37	37	---------> set -a __kill_signals "$signo $signame"
+65	65	---------> read -l signo signame
+35	35	---------> set -a __kill_signals "$signo $signame"
+52	52	---------> read -l signo signame
+34	34	---------> set -a __kill_signals "$signo $signame"
+48	48	---------> read -l signo signame
+35	35	---------> set -a __kill_signals "$signo $signame"
+49	49	---------> read -l signo signame
+44	44	---------> set -a __kill_signals "$signo $signame"
+55	55	---------> read -l signo signame
+35	35	---------> set -a __kill_signals "$signo $signame"
+58	58	---------> read -l signo signame
+42	42	---------> set -a __kill_signals "$signo $signame"
+23	23	---------> read -l signo signame
+44	128	------> for arg in $argv...
+19	84	-------> if test $arg -gt 128...
+42	42	--------> test $arg -gt 128
+23	23	--------> echo $arg
+10	10	------> return 0
+23	23	----> set -l last_status_string ""
+5	33	----> if test "$last_status" -ne "$argv[-1]"...
+28	28	-----> test "$last_status" -ne "$argv[-1]"
+156	179	----> set -l normal (set_color normal)
+23	23	-----> set_color normal
+104	104	----> printf "%s" $normal $brace_sep_color $left_brace \
+            $status_color $last_pipestatus_string \
+            $normal $brace_sep_color $right_brace $normal $last_status_string $normal
+704	9640	-> echo -n -s (prompt_login)' ' (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal " "$prompt_status $suffix " "
+233	1650	--> prompt_login
+7	25	---> if not set -q __fish_machine...
+18	18	----> not set -q __fish_machine
+4	17	---> if set -q __fish_machine[1]...
+13	13	----> set -q __fish_machine[1]
+27	27	---> set -l color_host $fish_color_host
+5	16	---> if set -q SSH_TTY...
+11	11	----> set -q SSH_TTY
+773	1332	---> echo -n -s (set_color $fish_color_user) "$USER" (set_color normal) @ (set_color $color_host) (prompt_hostname) (set_color normal)
+65	65	----> set_color $fish_color_user
+23	23	----> set_color normal
+28	28	----> set_color $color_host
+273	416	----> prompt_hostname
+143	143	-----> string replace -r -- "\..*" "" $hostname
+27	27	----> set_color normal
+56	56	--> set_color $color_cwd
+159	1751	--> prompt_pwd
+34	34	---> set -l options h/help d/dir-length= D/full-length-dirs=
+61	61	---> argparse -n prompt_pwd $options -- $argv
+6	19	---> if set -q _flag_help...
+13	13	----> set -q _flag_help
+10	10	---> set -q argv[1]
+23	23	---> set argv $PWD
+10	10	---> set -ql _flag_d
+11	11	---> set -q fish_prompt_pwd_dir_length
+19	19	---> set -l fish_prompt_pwd_dir_length 1
+14	14	---> set -l fulldirs 0
+8	8	---> set -ql _flag_D
+10	10	---> set -q fish_prompt_pwd_full_dirs
+18	18	---> set -l fish_prompt_pwd_full_dirs 1
+73	1355	---> for path in $argv...
+173	211	----> set -l realhome (string escape --style=regex -- ~)
+38	38	-----> string escape --style=regex -- ~
+150	232	----> set -l tmp (string replace -r '^'"$realhome"'($|/)' '~$1' $path)
+82	82	-----> string replace -r '^'"$realhome"'($|/)' '~$1' $path
+42	839	----> if test "$fish_prompt_pwd_dir_length" -eq 0...
+30	30	-----> test "$fish_prompt_pwd_dir_length" -eq 0
+16	16	-----> set -l full
+28	508	-----> if test $fish_prompt_pwd_full_dirs -gt 0...
+20	20	------> test $fish_prompt_pwd_full_dirs -gt 0
+202	416	------> set -l all (string split -m (math $fish_prompt_pwd_full_dirs - 1) -r / $tmp)
+168	214	-------> string split -m (math $fish_prompt_pwd_full_dirs - 1) -r / $tmp
+46	46	--------> math $fish_prompt_pwd_full_dirs - 1
+23	23	------> set tmp $all[1]
+21	21	------> set full $all[2..]
+153	243	-----> string join / -- (string replace -ar -- '(\.?[^/]{'"$fish_prompt_pwd_dir_length"'})[^/]*/' '$1/' $tmp) $full
+90	90	------> string replace -ar -- '(\.?[^/]{'"$fish_prompt_pwd_dir_length"'})[^/]*/' '$1/' $tmp
+262	5479	--> fish_vcs_prompt
+246	4523	---> fish_git_prompt $argv
+10	69	----> if not command -sq git...
+59	59	-----> not command -sq git
+7	179	----> if functions -q __fish_git_prompt_ready...
+172	172	-----> functions -q __fish_git_prompt_ready
+341	3981	----> set -l repo_info (command git rev-parse --git-dir --is-inside-git-dir --is-bare-repository --is-inside-work-tree HEAD 2>/dev/null)
+3640	3640	-----> command git rev-parse --git-dir --is-inside-git-dir --is-bare-repository --is-inside-work-tree HEAD 2>/dev/null
+39	39	----> test -n "$repo_info"
+9	9	----> return
+206	332	---> fish_hg_prompt $argv
+22	126	----> if not command -sq hg...
+94	94	-----> not command -sq hg
+10	10	-----> return 1
+249	362	---> fish_fossil_prompt $argv
+17	113	----> if not command -sq fossil...
+87	87	-----> not command -sq fossil
+9	9	-----> return 1
+63	3449	> fish_title
+60	60	-> set -l ssh
+15	15	-> set -q SSH_TTY
+46	3311	-> if set -q argv[1]...
+13	13	--> set -q argv[1]
+206	230	--> set -l command (status current-command)
+24	24	---> status current-command
+17	64	--> if test "$command" = fish...
+30	30	---> test "$command" = fish
+17	17	---> set command
+383	2958	--> echo -- $ssh (string sub -l 20 -- $command) (prompt_pwd -d 1 -D 1)
+29	29	---> string sub -l 20 -- $command
+149	2546	---> prompt_pwd -d 1 -D 1
+29	29	----> set -l options h/help d/dir-length= D/full-length-dirs=
+76	76	----> argparse -n prompt_pwd $options -- $argv
+7	20	----> if set -q _flag_help...
+13	13	-----> set -q _flag_help
+10	10	----> set -q argv[1]
+25	25	----> set argv $PWD
+10	10	----> set -ql _flag_d
+25	25	----> set -l fish_prompt_pwd_dir_length $_flag_d
+32	32	----> set -q fish_prompt_pwd_dir_length
+21	21	----> set -l fulldirs 0
+10	10	----> set -ql _flag_D
+23	23	----> set -l fish_prompt_pwd_full_dirs $_flag_D
+12	12	----> set -q fish_prompt_pwd_full_dirs
+86	2104	----> for path in $argv...
+264	317	-----> set -l realhome (string escape --style=regex -- ~)
+53	53	------> string escape --style=regex -- ~
+423	600	-----> set -l tmp (string replace -r '^'"$realhome"'($|/)' '~$1' $path)
+177	177	------> string replace -r '^'"$realhome"'($|/)' '~$1' $path
+53	1101	-----> if test "$fish_prompt_pwd_dir_length" -eq 0...
+43	43	------> test "$fish_prompt_pwd_dir_length" -eq 0
+20	20	------> set -l full
+29	607	------> if test $fish_prompt_pwd_full_dirs -gt 0...
+22	22	-------> test $fish_prompt_pwd_full_dirs -gt 0
+234	505	-------> set -l all (string split -m (math $fish_prompt_pwd_full_dirs - 1) -r / $tmp)
+217	271	--------> string split -m (math $fish_prompt_pwd_full_dirs - 1) -r / $tmp
+54	54	---------> math $fish_prompt_pwd_full_dirs - 1
+30	30	-------> set tmp $all[1]
+21	21	-------> set full $all[2..]
+226	378	------> string join / -- (string replace -ar -- '(\.?[^/]{'"$fish_prompt_pwd_dir_length"'})[^/]*/' '$1/' $tmp) $full
+152	152	-------> string replace -ar -- '(\.?[^/]{'"$fish_prompt_pwd_dir_length"'})[^/]*/' '$1/' $tmp
+1469	5816	> source /usr/share/fish/completions/nvim.fish
+316	316	-> type --quiet __fish_vim_tags
+1985	3203	-> source (status dirname)/vim.fish
+33	33	--> status dirname
+11	11	--> function __fish_vim_find_tags_path...
+4	4	--> function __fish_vim_tags...
+159	159	--> complete -c vim -s c -r -d 'Execute Ex command after the first file has been read'
+20	20	--> complete -c vim -s S -r -d 'Source file after the first file has been read'
+28	28	--> complete -c vim -l cmd -r -d 'Execute Ex command before loading any vimrc'
+15	15	--> complete -c vim -s d -r -d 'Use device as terminal (Amiga only)'
+14	14	--> complete -c vim -s i -r -d 'Set the viminfo file location'
+14	14	--> complete -c vim -s o -d 'Open horizontally split windows for each file'
+14	14	--> complete -c vim -o o2 -d 'Open two horizontally split windows'
+13	13	--> complete -c vim -s O -d 'Open vertically split windows for each file'
+13	13	--> complete -c nvim -o O2 -d 'Open two vertically split windows'
+21	21	--> complete -c vim -s p -d 'Open tab pages for each file'
+14	14	--> complete -c nvim -o p2 -d 'Open two tab pages'
+12	12	--> complete -c vim -s q -r -d 'Start in quickFix mode'
+13	13	--> complete -c vim -s r -r -d 'Use swap files for recovery'
+12	12	--> complete -c vim -s s -r -d 'Source and execute script file'
+39	39	--> complete -c vim -s t -xa '(__fish_vim_tags)' -d 'Set the cursor to tag'
+13	13	--> complete -c vim -s T -r -d 'Terminal name'
+12	12	--> complete -c vim -s u -r -d 'Use alternative vimrc'
+13	13	--> complete -c vim -s U -r -d 'Use alternative vimrc in GUI mode'
+22	22	--> complete -c vim -s w -r -d 'Record all typed characters'
+14	14	--> complete -c vim -s W -r -d 'Record all typed characters (overwrite file)'
+11	11	--> complete -c vim -s A -d 'Start in Arabic mode'
+12	12	--> complete -c vim -s b -d 'Start in binary mode'
+11	11	--> complete -c vim -s C -d 'Behave mostly like vi'
+11	11	--> complete -c vim -s d -d 'Start in diff mode'
+11	11	--> complete -c vim -s D -d 'Debugging mode'
+11	11	--> complete -c vim -s e -d 'Start in Ex mode'
+12	12	--> complete -c vim -s E -d 'Start in improved Ex mode'
+12	12	--> complete -c vim -s f -d 'Start in foreground mode'
+10	10	--> complete -c vim -s F -d 'Start in Farsi mode'
+10	10	--> complete -c vim -s g -d 'Start in GUI mode'
+18	18	--> complete -c vim -s h -d 'Print help message and exit'
+12	12	--> complete -c vim -s H -d 'Start in Hebrew mode'
+11	11	--> complete -c vim -s L -d 'List swap files'
+11	11	--> complete -c vim -s l -d 'Start in lisp mode'
+18	18	--> complete -c vim -s m -d 'Disable file modification'
+13	13	--> complete -c vim -s M -d 'Disallow file modification'
+12	12	--> complete -c vim -s N -d 'Reset compatibility mode'
+11	11	--> complete -c vim -s n -d 'Don\'t use swap files'
+11	11	--> complete -c vim -s R -d 'Read only mode'
+10	10	--> complete -c vim -s r -d 'List swap files'
+11	11	--> complete -c vim -s s -d 'Start in silent mode'
+11	11	--> complete -c vim -s V -d 'Start in verbose mode'
+11	11	--> complete -c vim -s v -d 'Start in vi mode'
+12	12	--> complete -c vim -s x -d 'Use encryption when writing files'
+36	36	--> complete -c vim -s X -d 'Don\'t connect to X server'
+34	34	--> complete -c vim -s y -d 'Start in easy mode'
+55	55	--> complete -c vim -s Z -d 'Start in restricted mode'
+14	14	--> complete -c vim -o nb -d 'Become an editor server for NetBeans'
+12	12	--> complete -c vim -l no-fork -d 'Start in foreground mode'
+13	13	--> complete -c vim -l echo-wid -d 'Echo the Window ID on stdout (GTK GUI only)'
+12	12	--> complete -c vim -l help -d 'Print help message and exit'
+11	11	--> complete -c vim -l literal -d 'Do not expand wildcards'
+11	11	--> complete -c vim -l noplugin -d 'Skip loading plugins'
+16	16	--> complete -c vim -l remote -d 'Edit files on Vim server'
+32	32	--> complete -c vim -l remote-expr -d 'Evaluate expr on Vim server'
+49	49	--> complete -c vim -l remote-send -d 'Send keys to Vim server'
+16	16	--> complete -c vim -l remote-silent -d 'Edit files on Vim server'
+12	12	--> complete -c vim -l remote-wait -d 'Edit files on Vim server'
+13	13	--> complete -c vim -l remote-wait-silent -d 'Edit files on Vim server'
+13	13	--> complete -c vim -l serverlist -d 'List all Vim servers that can be found'
+11	11	--> complete -c vim -l servername -d 'Set server name'
+13	13	--> complete -c vim -l version -d 'Print version information and exit'
+13	13	--> complete -c vim -l socketid -r -d 'Run gvim in another window (GTK GUI only)'
+13	13	--> complete -c vim -l clean -d 'Factory defaults: skip vimrc, plugins, viminfo'
+13	13	--> complete -c vim -l startuptime -r -d 'Write startup timing messages to <file>'
+45	45	-> complete -c nvim -s c -r -d 'Execute Ex command after the first file has been read'
+15	15	-> complete -c nvim -s S -r -d 'Source file after the first file has been read'
+14	14	-> complete -c nvim -l cmd -r -d 'Execute Ex command before loading any vimrc'
+13	13	-> complete -c nvim -s i -r -d 'Set the shada file location'
+12	12	-> complete -c nvim -s o -d 'Open horizontally split windows for each file'
+13	13	-> complete -c nvim -o o2 -d 'Open two horizontally split windows'
+44	44	-> complete -c nvim -s O -d 'Open vertically split windows for each file'
+15	15	-> complete -c nvim -o O2 -d 'Open two vertically split windows'
+12	12	-> complete -c nvim -s p -d 'Open tab pages for each file'
+12	12	-> complete -c nvim -o p2 -d 'Open two tab pages'
+13	13	-> complete -c nvim -s q -r -d 'Start in quickFix mode'
+12	12	-> complete -c nvim -s r -r -d 'Use swap files for recovery'
+38	38	-> complete -c nvim -s t -xa '(__fish_vim_tags)' -d 'Set the cursor to tag'
+13	13	-> complete -c nvim -s u -r -d 'Use alternative vimrc'
+31	31	-> complete -c nvim -s w -r -d 'Record all typed characters'
+15	15	-> complete -c nvim -s W -r -d 'Record all typed characters (overwrite file)'
+12	12	-> complete -c nvim -s A -d 'Start in Arabic mode'
+11	11	-> complete -c nvim -s b -d 'Start in binary mode'
+11	11	-> complete -c nvim -s d -d 'Start in diff mode'
+24	24	-> complete -c nvim -s D -d 'Debugging mode'
+26	26	-> complete -c nvim -s e -d 'Start in Ex mode, execute stdin as Ex commands'
+52	52	-> complete -c nvim -s E -d 'Start in Ex mode, read stdin as text into buffer 1'
+23	23	-> complete -c nvim -s h -d 'Print help message and exit'
+12	12	-> complete -c nvim -s H -d 'Start in Hebrew mode'
+11	11	-> complete -c nvim -s L -d 'List swap files'
+12	12	-> complete -c nvim -s m -d 'Disable file modification'
+11	11	-> complete -c nvim -s M -d 'Disable buffer modification'
+12	12	-> complete -c nvim -s n -d 'Don\'t use swap files'
+11	11	-> complete -c nvim -s R -d 'Read-only mode'
+11	11	-> complete -c nvim -s r -d 'List swap files'
+18	18	-> complete -c nvim -s V -d 'Start in verbose mode'
+16	16	-> complete -c nvim -s h -l help -d 'Print help message and exit'
+13	13	-> complete -c nvim -l noplugin -d 'Skip loading plugins'
+15	15	-> complete -c nvim -s v -l version -d 'Print version information and exit'
+12	12	-> complete -c nvim -l clean -d 'Factory defaults: skip vimrc, plugins, shada'
+13	13	-> complete -c nvim -l startuptime -r -d 'Write startup timing messages to <file>'
+11	11	-> complete -c nvim -s l -r -d 'Execute Lua script'
+14	14	-> complete -c nvim -s ll -r -d 'Execute Lua script in uninitialized editor'
+15	15	-> complete -c nvim -s es -d 'Start in Ex script mode, execute stdin as Ex commands'
+13	13	-> complete -c nvim -s Es -d 'Start in Ex script mode, read stdin as text into buffer 1'
+13	13	-> complete -c nvim -s s -r -d 'Execute script file as normal-mode input'
+12	12	-> complete -c nvim -l api-info -d 'Write msgpack-encoded API metadata to stdout'
+12	12	-> complete -c nvim -l embed -d 'Use stdin/stdout as a msgpack-rpc channel'
+12	12	-> complete -c nvim -l headless -d "Don't start a user interface"
+14	14	-> complete -c nvim -l listen -r -d 'Serve RPC API from this address (e.g. 127.0.0.1:6000)'
+13	13	-> complete -c nvim -l server -r -d 'Specify RPC server to send commands to'
+18	18	-> complete -c nvim -l remote -d 'Edit files on nvim server specified with --server'
+13	13	-> complete -c nvim -l remote-expr -d 'Evaluate expr on nvim server specified with --server'
+12	12	-> complete -c nvim -l remote-send -d 'Send keys to nvim server specified with --server'
+13	13	-> complete -c nvim -l remote-silent -d 'Edit files on nvim server specified with --server'
+87	3087	> fish_title nvim\ .config/hypr-profiles/desire/kitty/kitty.conf\ 
+41	41	-> set -l ssh
+23	23	-> set -q SSH_TTY
+28	2936	-> if set -q argv[1]...
+9	9	--> set -q argv[1]
+496	2899	--> echo -- $ssh (string sub -l 20 -- $argv[1]) (prompt_pwd -d 1 -D 1)
+34	34	---> string sub -l 20 -- $argv[1]
+237	2369	---> prompt_pwd -d 1 -D 1
+20	20	----> set -l options h/help d/dir-length= D/full-length-dirs=
+50	50	----> argparse -n prompt_pwd $options -- $argv
+4	13	----> if set -q _flag_help...
+9	9	-----> set -q _flag_help
+7	7	----> set -q argv[1]
+15	15	----> set argv $PWD
+6	6	----> set -ql _flag_d
+15	15	----> set -l fish_prompt_pwd_dir_length $_flag_d
+6	6	----> set -q fish_prompt_pwd_dir_length
+11	11	----> set -l fulldirs 0
+5	5	----> set -ql _flag_D
+11	11	----> set -l fish_prompt_pwd_full_dirs $_flag_D
+6	6	----> set -q fish_prompt_pwd_full_dirs
+109	1967	----> for path in $argv...
+229	257	-----> set -l realhome (string escape --style=regex -- ~)
+28	28	------> string escape --style=regex -- ~
+257	334	-----> set -l tmp (string replace -r '^'"$realhome"'($|/)' '~$1' $path)
+77	77	------> string replace -r '^'"$realhome"'($|/)' '~$1' $path
+55	1267	-----> if test "$fish_prompt_pwd_dir_length" -eq 0...
+30	30	------> test "$fish_prompt_pwd_dir_length" -eq 0
+14	14	------> set -l full
+36	740	------> if test $fish_prompt_pwd_full_dirs -gt 0...
+16	16	-------> test $fish_prompt_pwd_full_dirs -gt 0
+188	608	-------> set -l all (string split -m (math $fish_prompt_pwd_full_dirs - 1) -r / $tmp)
+243	420	--------> string split -m (math $fish_prompt_pwd_full_dirs - 1) -r / $tmp
+177	177	---------> math $fish_prompt_pwd_full_dirs - 1
+47	47	-------> set tmp $all[1]
+33	33	-------> set full $all[2..]
+305	428	------> string join / -- (string replace -ar -- '(\.?[^/]{'"$fish_prompt_pwd_dir_length"'})[^/]*/' '$1/' $tmp) $full
+123	123	-------> string replace -ar -- '(\.?[^/]{'"$fish_prompt_pwd_dir_length"'})[^/]*/' '$1/' $tmp
+34976485	34976485	> nvim .config/hypr-profiles/desire/kitty/kitty.conf
